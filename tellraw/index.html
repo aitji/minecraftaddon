@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta property="og:title" content="@InwAitJi | Bedrock Tellraw">
+    <meta property="og:description" content="Minecraft Bedrock Tellraw Generator • only available Bedrock Edition">
+    <meta property="og:image"
+        content="https://media.discordapp.net/attachments/967680143617302548/1171447335411261551/AitJi.png?ex=655cb659&is=654a4159&hm=0f6c2a49fe96b15a4d9900c98bce6ace9a7d95340a49a33658257f2f7720a4b6&=&width=252&height=252">
+    <meta property="og:url" content="https://mcbe.vercel.app">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="icon"
+        href="https://media.discordapp.net/attachments/967680143617302548/1171447335411261551/AitJi.png?ex=655cb659&is=654a4159&hm=0f6c2a49fe96b15a4d9900c98bce6ace9a7d95340a49a33658257f2f7720a4b6&=&width=252&height=252"
+        type="image/png">
+    <title>InwAitJi • Minecraft Bedrock Tellraw Generator</title>
+    <link rel="stylesheet" href="../style/styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;700;900&display=swap');
+
+        @media only screen and (max-width: 600px) {
+            #componentPopup {
+                word-wrap: break-word;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 100%;
+                display: block;
+                text-align: center;
+                padding: 10px;
+            }
+
+            input[type="text"] {
+                word-wrap: break-word;
+                max-width: 100%;
+                display: block;
+            }
+        }
+
+
+        h2 {
+            text-align: center;
+        }
+
+        .icon {
+            margin-bottom: 10px;
+        }
+
+        .icon img {
+            width: 100px;
+            height: 100px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .icon img:hover {
+            transform: scale(1.5);
+        }
+
+        body,
+        .container,
+        .component,
+        .remove-button,
+        .popup,
+        .dark-mode-toggle,
+        select,
+        input[type="text"] {
+            font-family: 'IBM Plex Sans Thai', Arial, sans-serif;
+        }
+
+        body {
+            text-align: center;
+            font-size: 20px;
+            background-color: #f9f9f9;
+            color: #0e0e0e;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #020202;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+
+        input {
+            background-color: #f8f8f8;
+            color: #000000;
+        }
+
+        textarea {
+            padding: 10px;
+            max-width: 90%;
+            margin-top: 5px;
+            margin-left: 0px;
+            width: 350px;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.07);
+            border: 1px solid #FFFFFF;
+            border-radius: 6px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+            color: #555555;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1em;
+            line-height: 1.4em;
+            transition: background-color 0.2s ease 0s;
+        }
+
+        textarea:focus {
+            background: #FFFFFF;
+            outline-width: 0;
+        }
+
+        #componentType {
+            background-color: rgb(215, 215, 215);
+            color: #2a2a2a;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        #componentPopup {
+            word-wrap: break-word;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #333333;
+            padding: 20px;
+            box-sizing: border-box;
+
+            margin-left: auto;
+            padding: 15px;
+
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+
+        #commandBox {
+            width: 100%;
+            height: 150px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            resize: vertical;
+        }
+
+        .selected {
+            margin-left: 5%;
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            border: 5px solid #d7d7d7;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .selected:focus {
+            margin-left: 5%;
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            border: 5px solid #000000;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input:hover {
+            border-color: #66afe9;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .container {
+            word-wrap: break-word;
+            margin: 20px auto;
+            background-color: #ffffff00;
+            border-radius: 0px;
+            box-shadow: 0 0.01 0px rgba(0, 0, 0, 0);
+            text-align: center;
+            color: #333333;
+            padding: 20px;
+            box-sizing: border-box;
+
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="icon">
+            <img src="../profile.png" alt="icon">
+            <h2>Tellraw Generator [BEDROCK]</h2>
+        </div>
+        <p>👋 Hello this is <a href="https://www.youtube.com/@aitji.">InwAitJi</a> tellraw command generator for
+            Minecraft
+            Bedrock edition</p>
+        <p>You can go back by <a id="back" href="#">click this (GoBack!)</a></p>
+        <div id="components"></div>
+        <br>
+        <div id="componentPopup" class="popup">
+            <h3>Add Component</h3>
+            <label>Type:</label>
+            <select id="componentType" class="selected" onchange="toggleScoreFields()">
+                <option value="text">Text</option>
+                <option value="entity">Entity</option>
+                <option value="score">Score</option>
+            </select>
+            <br><br>
+            <label id="contentlable">Content:</label>
+            <input type="text" id="componentContent" placeholder="Enter Text (e.g. Hello)" value="">
+            <br><br>
+            <label id="scoreObjectiveLabel" style="display:none">Objective (for Score):</label>
+            <input type="text" id="scoreObjective" placeholder="Enter Objective (e.g. money)" style="display:none"
+                value="">
+            <br><br>
+            <label id="scoreEntityLabel" style="display:none">Entity (for Score):</label>
+            <input type="text" id="scoreEntity" placeholder="Enter Entity (e.g. @s)" style="display:none" value="">
+            <br><br>
+            <button onclick="addPopupComponent()">Add Component</button>
+            <button onclick="closePopup()">Close</button>
+        </div>
+        <br>
+        <button onclick="openPopup()">Add Component</button>
+
+        <br>
+        <div id="command">
+            <h4>Tellraw Command:</h4>
+            <textarea id="tellrawCommand" readonly></textarea>
+        </div>
+
+        <button id="copyButton" onclick="copyToClipboard()">Copy Command</button>
+        <br>
+        <!-- <button type="button" id="back">Back</button> -->
+        <script src="../src/loader/main.js"></script>
+        <script src="../src/unload_warn/unload.js"></script>
+        <script src="../src/back_handel/index.js"></script>
+        <script>
+            const _0x79c117 = _0x2f2d; (function (_0x4e0f79, _0x2fb481) { const _0x19d1bb = _0x2f2d, _0x5a766e = _0x4e0f79(); while (!![]) { try { const _0x4685b1 = -parseInt(_0x19d1bb(0x8c)) / 0x1 * (-parseInt(_0x19d1bb(0x6b)) / 0x2) + parseInt(_0x19d1bb(0x7e)) / 0x3 + -parseInt(_0x19d1bb(0x8e)) / 0x4 * (parseInt(_0x19d1bb(0x74)) / 0x5) + -parseInt(_0x19d1bb(0x9a)) / 0x6 + -parseInt(_0x19d1bb(0x6e)) / 0x7 + parseInt(_0x19d1bb(0x99)) / 0x8 + parseInt(_0x19d1bb(0x75)) / 0x9; if (_0x4685b1 === _0x2fb481) break; else _0x5a766e['push'](_0x5a766e['shift']()); } catch (_0x5599a7) { _0x5a766e['push'](_0x5a766e['shift']()); } } }(_0x2e38, 0xc7b5f)); const components = [], componentPopup = document[_0x79c117(0x90)](_0x79c117(0x85)); let darkMode = ![]; function updateCommand() { const _0x21c4a8 = _0x79c117, _0x2911bd = components[_0x21c4a8(0x80)](_0x2c12fa => { const _0x29f3c8 = _0x21c4a8, { type: _0x1d3b29, content: _0x1f838d } = _0x2c12fa; if (_0x1d3b29 === _0x29f3c8(0x71)) return '{\x22translate\x22:\x22' + _0x1f838d + '\x22}'; else { if (_0x1d3b29 === _0x29f3c8(0x84)) return _0x29f3c8(0x8a) + _0x1f838d + '\x22}'; else { if (_0x1d3b29 === _0x29f3c8(0x76)) { const { objective: _0x118d39, entity: _0x1083ce } = _0x1f838d; return _0x29f3c8(0x7f) + _0x118d39 + '\x22,\x22name\x22:\x22' + _0x1083ce + _0x29f3c8(0x9b); } } } }), _0x50dcd7 = _0x21c4a8(0x7d) + _0x2911bd + ']}'; document[_0x21c4a8(0x90)](_0x21c4a8(0x79))[_0x21c4a8(0x89)] = _0x50dcd7; } function openPopup() { const _0x3968e5 = _0x79c117; componentPopup['style'][_0x3968e5(0x94)] = _0x3968e5(0x86); } function closePopup() { const _0x316ef4 = _0x79c117; componentPopup['style'][_0x316ef4(0x94)] = _0x316ef4(0x9c); } function _0x2f2d(_0x57a91c, _0x2e534a) { const _0x2e384a = _0x2e38(); return _0x2f2d = function (_0x2f2d80, _0x1de40a) { _0x2f2d80 = _0x2f2d80 - 0x69; let _0x453116 = _0x2e384a[_0x2f2d80]; return _0x453116; }, _0x2f2d(_0x57a91c, _0x2e534a); } function addPopupComponent() { const _0x36b4a6 = _0x79c117, _0x33ab52 = document['getElementById']('componentType')['value'], _0x1ac0d9 = document[_0x36b4a6(0x90)]('componentContent')['value'][_0x36b4a6(0xa1)](); if (_0x1ac0d9) { if (_0x33ab52 === _0x36b4a6(0x76)) { const _0x26ccc2 = document[_0x36b4a6(0x90)](_0x36b4a6(0x7a))['value']['trim'](), _0x22e37a = document[_0x36b4a6(0x90)](_0x36b4a6(0x8b))[_0x36b4a6(0x6d)][_0x36b4a6(0xa1)](); if (_0x26ccc2 && _0x22e37a) { const _0x275c05 = { 'type': _0x33ab52, 'content': { 'objective': _0x26ccc2, 'entity': _0x22e37a } }; components[_0x36b4a6(0x97)](_0x275c05), closePopup(), renderComponents(); } else alert('Please\x20enter\x20both\x20Objective\x20and\x20Entity\x20for\x20Score\x20component.'); } else { const _0xa0dbd8 = { 'type': _0x33ab52, 'content': _0x1ac0d9 }; components['push'](_0xa0dbd8), closePopup(), renderComponents(); } } else alert(_0x36b4a6(0x8d)); } function _0x2e38() { const _0x549478 = ['innerHTML', 'value', '11399521gYmdrj', 'body', 'component', 'text', 'add', 'removeChild', '4094335zgxAHg', '6933690yJMZtt', 'score', 'splice', 'objective', 'tellrawCommand', 'scoreObjective', 'scoreObjectiveLabel', 'classList', 'tellraw\x20@a\x20{\x22rawtext\x22:[', '4122534MRVPIK', '{\x22score\x22:{\x22objective\x22:\x22', 'map', 'style', ')\x22>Remove</button>', 'componentContent', 'entity', 'componentPopup', 'block', 'select', 'execCommand', 'textContent', '{\x22selector\x22:\x22', 'scoreEntity', '569xjOYEs', 'Please\x20enter\x20content\x20for\x20the\x20component.', '4VqqcPJ', 'content', 'getElementById', 'dark-mode-active', 'forEach', 'createElement', 'display', 'querySelectorAll', 'div', 'push', 'body,\x20.container,\x20.component,\x20.remove-button,\x20.popup,\x20.dark-mode-toggle,\x20select,\x20input[type=\x22text\x22]', '11965960YvSURc', '6547914BtAkAt', '\x22}}', 'none', 'type', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22remove-button\x22\x20onclick=\x22removeComponent(', 'dark-mode', '.dark-mode-toggle', 'trim', 'components', 'appendChild', '2518UMvKts']; _0x2e38 = function () { return _0x549478; }; return _0x2e38(); } function removeComponent(_0x169855) { const _0x55bd91 = _0x79c117; components[_0x55bd91(0x77)](_0x169855, 0x1), renderComponents(); } function renderComponents() { const _0xd80131 = _0x79c117, _0x1c9fea = document[_0xd80131(0x90)](_0xd80131(0x69)); _0x1c9fea[_0xd80131(0x6c)] = '', components[_0xd80131(0x92)]((_0x4f0915, _0x47fcda) => { const _0x4d68b8 = _0xd80131, _0xac5b9f = document[_0x4d68b8(0x93)](_0x4d68b8(0x96)); _0xac5b9f['classList'][_0x4d68b8(0x72)](_0x4d68b8(0x70)), _0xac5b9f[_0x4d68b8(0x6c)] = (_0x4f0915[_0x4d68b8(0x9d)] === _0x4d68b8(0x76) ? _0x4f0915[_0x4d68b8(0x8f)][_0x4d68b8(0x78)] + '\x20/\x20' + _0x4f0915[_0x4d68b8(0x8f)][_0x4d68b8(0x84)] : _0x4f0915[_0x4d68b8(0x8f)]) + _0x4d68b8(0x9e) + _0x47fcda + _0x4d68b8(0x82), _0x1c9fea['appendChild'](_0xac5b9f); }), updateCommand(); } function toggleDarkMode() { const _0x1d41b5 = _0x79c117; darkMode = !darkMode; const _0x10261e = document[_0x1d41b5(0x6f)], _0x3487bc = document[_0x1d41b5(0x95)](_0x1d41b5(0x98)); _0x3487bc[_0x1d41b5(0x92)](_0x39a5e6 => { const _0x42f6dc = _0x1d41b5; _0x39a5e6[_0x42f6dc(0x7c)]['toggle'](_0x42f6dc(0x9f), darkMode); }); const _0x51b5d7 = document['querySelector'](_0x1d41b5(0xa0)); _0x51b5d7[_0x1d41b5(0x7c)]['toggle'](_0x1d41b5(0x91), darkMode); } function copyToClipboard() { const _0x4b7c26 = _0x79c117, _0x241f40 = document['getElementById'](_0x4b7c26(0x79)), _0x5ebe9e = _0x241f40[_0x4b7c26(0x89)], _0x31a7eb = document[_0x4b7c26(0x93)]('textarea'); _0x31a7eb[_0x4b7c26(0x6d)] = _0x5ebe9e, document[_0x4b7c26(0x6f)][_0x4b7c26(0x6a)](_0x31a7eb), _0x31a7eb[_0x4b7c26(0x87)](), document[_0x4b7c26(0x88)]('copy'), document[_0x4b7c26(0x6f)][_0x4b7c26(0x73)](_0x31a7eb), alert('Command\x20copied\x20to\x20clipboard'); } function toggleScoreFields() { const _0x3687af = _0x79c117, _0xcc93e1 = document[_0x3687af(0x90)]('componentType')['value'], _0x3a0baf = document[_0x3687af(0x90)](_0x3687af(0x7b)), _0x1c9859 = document[_0x3687af(0x90)](_0x3687af(0x7a)), _0x1ac41e = document[_0x3687af(0x90)]('scoreEntityLabel'), _0x4e870c = document[_0x3687af(0x90)]('scoreEntity'), _0x132dec = document['getElementById'](_0x3687af(0x83)), _0xd635b5 = document[_0x3687af(0x90)]('contentlable'); _0xcc93e1 === 'score' ? (_0x3a0baf[_0x3687af(0x81)][_0x3687af(0x94)] = _0x3687af(0x86), _0x1c9859[_0x3687af(0x81)][_0x3687af(0x94)] = _0x3687af(0x86), _0x1ac41e['style'][_0x3687af(0x94)] = 'block', _0x4e870c[_0x3687af(0x81)][_0x3687af(0x94)] = _0x3687af(0x86), _0x132dec['style']['display'] = _0x3687af(0x9c), _0xd635b5[_0x3687af(0x81)][_0x3687af(0x94)] = _0x3687af(0x9c)) : (_0x3a0baf[_0x3687af(0x81)][_0x3687af(0x94)] = _0x3687af(0x9c), _0x1c9859[_0x3687af(0x81)][_0x3687af(0x94)] = _0x3687af(0x9c), _0x1ac41e['style'][_0x3687af(0x94)] = _0x3687af(0x9c), _0x4e870c[_0x3687af(0x81)][_0x3687af(0x94)] = _0x3687af(0x9c), _0x132dec[_0x3687af(0x81)][_0x3687af(0x94)] = _0x3687af(0x86), _0xd635b5[_0x3687af(0x81)][_0x3687af(0x94)] = _0x3687af(0x86)); }
+        </script>
+</body>
+
+</html>

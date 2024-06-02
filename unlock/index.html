@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta property="og:title" content="@aitji's | Subscribe Gateway">
+    <meta property="og:description" content="aitji's subscribe gateway before get da addon!">
+    <meta property="og:image"
+        content="../img/favicon.ico">
+    <meta property="og:url" content="https://mcbe.vercel.app">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="icon"
+        href="../img/favicon.ico"
+        type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe Gateway</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;700;900&display=swap');
+        * {
+            font-family: 'IBM Plex Sans Thai', Arial, sans-serif;
+        }
+
+        body {
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #131415 10px, #131415 20px);
+            background-color: #181a1b;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+            margin-left: 35%;
+        }
+
+        .banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner img {
+            max-width: 58%;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+            border-radius: 5px;
+            border: 5px solid #181919;
+            box-shadow: 10px 10px #181919;
+        }
+
+        @media (max-width: 768px) {
+            .banner {
+                max-width: 100%;
+            }
+
+            .container {
+                max-width: 90%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                box-sizing: border-box;
+                margin-left: 5%;
+            }
+        }
+
+        .content {
+            background-color: #242727;
+            align-items: center;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 10px 10px #130e1264;
+        }
+
+        .loading-bar {
+            background-color: #444;
+            height: 20px;
+            margin-bottom: 20px;
+        }
+
+        .youtube-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .youtube-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .youtube-info h2 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .unlock-message {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #d91015;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .button-container button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+
+        .recycle-bin {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .recycle-bin-x {
+            position: fixed;
+            bottom: 12px;
+            right: 12px;
+            font-size: 34px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #d91015;
+        }
+        a:hover {
+            color: #ff2222;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="banner">
+                <img src="../../img/banner.jpg" id="dynamic_banner" alt="aitji banner">
+            </div>
+            <br>
+
+            <div class="loading-bar"></div>
+            <div class="youtube-info">
+                <img src="../../img/icon.jpg" alt="aitji icon">
+                <h2>AitJi Gamer | @aitji</h2>
+            </div>
+            <p class="unlock-message" id="dynamic_text">เพื่อปลดล็อกแอดออน <a>unknow (addon)</a> กดติดตามเราหน่อยน้า~!<a id="back"
+                    href="../new">ย้อนกลับไปดูแอดออนอื่น</a></p>
+            <div class="button-container" id="buttonContainer">
+                <button id="subscribeBtn">ติดตาม ➕</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="recycle-bin-x">❌</div>
+    <div class="recycle-bin">🍪</div>
+    <script type="module" src="../unlock/script.js"></script>
+    <script type="module" src="../mewo/oneko.js"></script>
+</body>
+
+</html>

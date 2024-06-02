@@ -1,0 +1,52 @@
+function dd() {
+    var ua = navigator.userAgent
+    if (/Android/i.test(ua)) return 'Mobile (Android)'
+    else if (/iPhone|iPad|iPod/i.test(ua)) return 'Mobile (iOS)'
+    else if (/Windows Phone/i.test(ua)) return 'Mobile (Windows Phone)'
+    else if (/Windows/i.test(ua)) return 'Desktop (Windows)'
+    else if (/Macintosh|MacIntel|MacPPC|Mac68K/i.test(ua)) return 'Desktop (Mac)'
+    else if (/Linux/i.test(ua)) return 'Desktop (Linux)'
+    else return 'un record device 🥺'
+}
+
+function gia() {
+    fetch('https://api64.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ip-address').innerText = 'Cilent IP ' + data.ip;
+        })
+        .catch(e => console.error('Error fetching IP address:', e));
+}
+
+function gg() {
+    navigator.geolocation.getCurrentPosition(
+        p => {
+            var lat = p.coords.latitude;
+            var lon = p.coords.longitude;
+            document.getElementById('geolocation').innerText = '🗂️ Client Location ' + lat + ', ' + lon;
+        },
+        e => console.error('Error fetching geolocation:', e)
+    );
+}
+
+function db() {
+    document.getElementById('browser-info').innerText = 'Browser: ' + navigator.userAgent;
+}
+
+function sdt() {
+    var cd = new Date();
+    document.getElementById('date-time').innerText = '🪜 Date: ' + cd.toLocaleString();
+}
+window.onload = function () {
+    db()
+    var di = dd();
+    document.getElementById('device-info').innerText = '🍂 Device: ' + di;
+    gia()
+    gg()
+    sdt()
+};
+
+let country = "unknown"
+let internetProvider = "unknow"
+let postal = "unknow"
+let timezone = "unknow"

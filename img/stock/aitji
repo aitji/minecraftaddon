@@ -1,0 +1,145 @@
+/**
+ * @author aitji
+ * please don't stolen my work ok?
+ */
+
+document.addEventListener("DOMContentLoaded", function () {
+    var lazy = [].slice.call(document.querySelectorAll("img.lazy"))
+
+    if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function (entry, observer) {
+            entry.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    let lazyImage = entry.target
+                    lazyImage.src = lazyImage.dataset.src
+                    lazyImage.classList.remove("lazy")
+                    lazyImageObserver.unobserve(lazyImage)
+                }
+            })
+        })
+
+        lazy.forEach(function (img) { lazyImageObserver.observe(img) })
+    }
+
+    var stableFirstCheckbox = document.getElementById("stableFirstCheckbox")
+    stableFirstCheckbox.addEventListener("change", function () {
+        generate(stableFirstCheckbox.checked)
+        if (stableFirstCheckbox.checked) {
+            var loadingBar = document.getElementById("loadingBar")
+            loadingBar.classList.add("loading")
+        } else {
+            var loadingBar = document.getElementById("loadingBar")
+            loadingBar.classList.remove("loading")
+        }
+    })
+
+    var darkModeCheckbox = document.getElementById("darkModeCheckbox")
+    darkModeCheckbox.addEventListener("change", function () {
+        if (darkModeCheckbox.checked) {
+            document.body.classList.add("dark-mode")
+        } else {
+            document.body.classList.remove("dark-mode")
+        }
+    })
+})
+
+function create(
+    title = "unrecorded title",
+    des = "unrecorded des",
+    imgSRC = "./stock/_missing.png",
+    readId = 0,
+    pageHref = "#",
+    isStable = false
+) {
+    var card = document.createElement("div")
+    card.classList.add("addon-card")
+
+    card.style.opacity = "0"
+    card.style.transform = "translateY(100px)"
+    card.style.transition = "opacity 0.6s ease, transform 0.6s ease"
+
+    var img = document.createElement("img")
+    img.classList.add("addon-img")
+    img.src = imgSRC
+    img.alt = title + " Image"
+    card.appendChild(img)
+
+    var aTitle = document.createElement("h3")
+    aTitle.classList.add("addon-title")
+    aTitle.textContent = title
+    card.appendChild(aTitle)
+
+    var aDes = document.createElement("p")
+    aDes.classList.add("addon-description")
+    aDes.textContent = des
+    card.appendChild(aDes)
+
+    var md = document.createElement("a")
+    md.classList.add("read-more")
+    md.href = pageHref
+    md.textContent = "(อ่านเพิ่มเติม)"
+    md.id = readId
+    card.appendChild(md)
+
+    if (isStable) {
+        var tagR = document.createElement("span")
+        tagR.classList.add("addon-stable-tag")
+        tagR.textContent = "@stable"
+        card.appendChild(tagR)
+    } else {
+        var tagR = document.createElement("span")
+        tagR.classList.add("addon-beta-tag")
+        tagR.textContent = "⚠️ BETA API"
+        card.appendChild(tagR)
+    }
+
+    var addonGrid = document.querySelector(".addon-grid")
+    addonGrid.appendChild(card)
+
+    setTimeout(() => {
+        card.style.opacity = "1"
+        card.style.transform = "translateY(0)"
+    }, 100)
+}
+
+function generate(stableFirst = false) {
+    var addonGrid = document.querySelector(".addon-grid")
+    addonGrid.innerHTML = ""
+    var addons = []
+
+    addons.push({ title: "Roblox Chat! (แชทแบบ Roblox)", description: "แอดออนนี้จะเพิ่มแชทบนป้ายชื่อของผู้เล่นโดยแอดมินจะมีสิทธิ์ตั้งค่าได้!", imgSrc: './new/stock/rbchat.jpg', readId: "rbchat", pageHref: "#", isStable: false })
+    addons.push({ title: "Wanted! (ล่าค่าหัว)", description: "แอดออนนี้เป็นระบบล่าค่าหัวพื้นฐานผู้ดูแลมีสิทธิ์ตั้งค่าแอดออนได้", imgSrc: './new/stock/wanted.jpg', readId: "wanted", pageHref: "#", isStable: true })
+    addons.push({ title: "Ban/Unban! (การ แบนและปลดแบน)", description: "แอดออนนี้เป็นแอดออนที่เพิ่มสิทธิ์ให้ผู้ดูแลเซิร์ฟวเอร์แบนหรือปลดแบนผู้เล่นในเซิร์ฟเวอร์", imgSrc: './new/stock/ban.jpg', readId: "ban", pageHref: "#", isStable: false })
+    addons.push({ title: "VoteKick (โหวตเตะผู้เล่น)", description: "แอดออนนี้เพิ่มความมีส่วนร่วมให้กับผู้เล่นในเซิร์ฟเวอร์ของคุณ ทำให้พวกเขาสามารถโหวตคนนิสัยแย่ ๆ ในเซิร์ฟเวอร์ออกไปได้!", imgSrc: './new/stock/voteKick.jpg', readId: "voteKick", pageHref: "#", isStable: true })
+    addons.push({ title: "UnBreak (ระบบกันพัง)", description: "แอดออนนี้เราแค่เห็นว่ามันเท่ดีเลยทำมาแจกเป็นระบบกันทุบบล็อก/วางบล็อก (โหมดผจญภัยดีกว่า)", imgSrc: './new/stock/unbreak.jpg', readId: "unbreak", pageHref: "#", isStable: false })
+    addons.push({ title: "All Chat (รวมระบบแชท)", description: "แอดออนนี้เป็นแอดออนที่ผมรวบรวมระบบแชทที่เคยแจกก่อนหน้าเป็นอันเดียวแล้วมาแจกใหม่!", imgSrc: './new/stock/allchat.jpg', readId: "allchat", pageHref: "#", isStable: false })
+    addons.push({ title: "Dash (พุ่งหลาว)", description: "แอดออนนี้เพิ่มแท็ก Dash เพื่อนำไปใช้ควบคู่กับคอมมานบล็อกต่าง ๆ", imgSrc: './new/stock/dash.jpg', readId: "dash", pageHref: "#", isStable: true })
+
+    if (stableFirst) {
+        addons.sort((a, b) => {
+            if (a.isStable && !b.isStable) return -1       // a comes before b
+            else if (!a.isStable && b.isStable) return 1   // b comes before a
+            else return 0                                  // no change in order
+
+        })
+    }
+    /**
+     * else {
+     *     addons.sort((a, b) => {
+     *         if (a.isStable && !b.isStable) return 1        // b comes before a
+     *         else if (!a.isStable && b.isStable) return -1  // a comes before b
+     *         else return 0                                  // no change in order
+     *     })
+     * }
+    */
+
+    addons.forEach((addon, index) => {
+        create(addon.title, addon.description, addon.imgSrc, addon.readId, addon.pageHref, addon.isStable)
+        setTimeout(() => {
+            var addonCards = document.querySelectorAll(".addon-card")
+            addonCards[index].style.opacity = "1"
+            addonCards[index].style.transform = "translateY(0)"
+        }, 100 * (index + 1))
+    })
+}
+generate(false)

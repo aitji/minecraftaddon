@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta property="og:title" content="@InwAitJi | Bedrock Give Item">
+    <meta property="og:description"
+        content="Minecraft Bedrock GiveItem (CanDestroy/CanPlaceOn) • only available Bedrock Edition">
+    <meta property="og:image"
+        content="https://media.discordapp.net/attachments/684563190150987900/1182891290384412763/AitJi.png?ex=6586585c&is=6573e35c&hm=024784597df02571b2ba4824e8330a93e1984958f09ae7ea08c16a890d9a2be0&=&width=252&height=252">
+    <meta property="og:url" content="https://mcbe.vercel.app">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InwAitJi | Minecraft Bedrock Give Command Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="icon"
+        href="https://media.discordapp.net/attachments/684563190150987900/1182891290384412763/AitJi.png?ex=6586585c&is=6573e35c&hm=024784597df02571b2ba4824e8330a93e1984958f09ae7ea08c16a890d9a2be0&=&width=252&height=252"
+        type="image/png">
+    <link rel="stylesheet" href="../style/styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            text-align: left;
+            padding: 30px;
+
+            padding-left: 35%;
+            padding-right: 35%;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        p {
+            font-size: 1em;
+            margin: 20px 0;
+        }
+
+        .form-group {
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        .input-field {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-field {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .add-button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        .list-container {
+            margin: 10px 0;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #eee;
+            color: #333;
+            resize: none;
+            margin-top: 10px;
+        }
+
+        hr {
+            border-top: 2px solid rgba(184, 54, 54, 0.33);
+        }
+
+        @media (max-width: 600px) {
+
+            input[type="text"],
+            input[type="number"],
+            .input-field {
+                font-size: 14px;
+            }
+
+            button[type="button"] {
+                font-size: 14px;
+            }
+
+            body {
+                padding: 10px;
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group div {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .checkbox {
+            margin-right: 5px;
+        }
+
+        .select {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            height: 45px;
+            overflow: hidden;
+            transition: height 0.3s ease-out;
+        }
+
+        .select:focus {
+            height: 48px;
+            transition: height 0.5s ease-in-out;
+        }
+
+        .select select {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            background: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        li {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        li.moving-up {
+            transform: translateY(-30px);
+        }
+
+        li.moving-down {
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <h1>Give Command Generator</h1>
+    <p>👋 Hello this is <a href="https://www.youtube.com/@aitji.">InwAitJi</a> give command generator for Minecraft
+        Bedrock edition</p>
+    You can go back by <a type="button" id="back" href="#">click this (GoBack!)</a>
+    <br>
+    <br>
+    <hr>
+
+    <form>
+        <div class="form-group">
+            <label for="itemType">Item Type:</label>
+            <input type="text" id="itemType" placeholder="Item Type" value="minecraft:air">
+        </div>
+
+        <div class="form-group">
+            <label for="count">Item Count:</label>
+            <input type="number" id="count" placeholder="Item Count" value="1">
+        </div>
+
+        <div class="form-group">
+            <label for="id">Item Id:</label>
+            <input type="number" id="id" placeholder="Item Id" value="0">
+        </div>
+
+        <div class="form-group">
+            <label for="playerName">Player Name:</label>
+            <input type="text" id="playerName" placeholder="Player Name" value="@s">
+        </div>
+
+        <div class="form-group">
+            <label for="canPlace">Can Place On:</label>
+            <div class="input-container">
+                <input type="text" id="canPlace" placeholder="Block Type" class="input-field">
+                <button type="button" id="canPlaceAddButton" class="add-button">Add</button>
+            </div>
+            <div id="canPlaceList" class="list-container"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="canDestroy">Can Destroy:</label>
+            <div class="input-container">
+                <input type="text" id="canDestroy" placeholder="Block Type" class="input-field">
+                <button type="button" id="canDestroyAddButton" class="add-button">Add</button>
+            </div>
+            <div id="canDestroyList" class="list-container"></div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <div>
+                <label for="keep_on_death">Keep On Death:</label>
+                <input class="checkbox" type="checkbox" id="keep_on_death" name="keep_on_death" value="keep_on_death">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lock_mode">Lock:</label>
+            <select class="select" name="lock_mode" id="lock_mode">
+                <option value="none">Not Lock</option>
+                <option value="inventory">Lock Inventory</option>
+                <option value="slot">Lock Slot</option>
+            </select>
+        </div>
+
+        <hr>
+
+        <textarea id="commandOutput" rows="5" cols="50" readonly></textarea>
+
+        <button type="button" id="copyCommandButton">Copy</button>
+
+    </form>
+
+    <script src="../src/GvJSgyLfdo/givegen.js"></script>
+    <script src="../src/loader/main.js"></script>
+    <script src="../src/unload_warn/unload.js"></script>
+    <script src="../src/back_handel/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="apple-touch-icon"
+        href="https://media.discordapp.net/attachments/684563190150987900/1182891290384412763/AitJi.png?ex=6586585c&is=6573e35c&hm=024784597df02571b2ba4824e8330a93e1984958f09ae7ea08c16a890d9a2be0&=&width=252&height=252">
+    <meta name="theme-color" content="#ff4545">
+    <meta property="og:site_name" content="Download inwaitji addon" />
+    <meta property="og:title" content="Minecraft Addon">
+    <meta property="og:description" content="Download inwaitji addon!">
+    <meta property="og:image"
+        content="https://media.discordapp.net/attachments/684563190150987900/1182891290384412763/AitJi.png?ex=6586585c&is=6573e35c&hm=024784597df02571b2ba4824e8330a93e1984958f09ae7ea08c16a890d9a2be0&=&width=252&height=252">
+    <meta property="og:url" content="https://mcbe.vercel.app/">
+    <meta charset="UTF-8">
+
+    <meta name="description" content="Download inwaitji addon!" />
+    <meta name="twitter:card"
+        content="https://media.discordapp.net/attachments/684563190150987900/1182891290384412763/AitJi.png?ex=6586585c&is=6573e35c&hm=024784597df02571b2ba4824e8330a93e1984958f09ae7ea08c16a890d9a2be0&=&width=252&height=252" />
+    <meta name="twitter:site" content="@discord" />
+    <meta name="twitter:title" content="Minecraft Addon" />
+    <meta name="twitter:description" content="Download inwaitji addon" />
+    <meta property="og:locale:alternate" content="th" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="https://mcbe.vercel.app">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="mcbe">
+    <meta name="keywords"
+        content="Minecraft, minecraft, mc, minecraftbedrock, bedrock, mcbe, thai, server, mmo, minecraftpe, pe, cmg, aitji, ait, cmgelement, element, mcpe, mc server, minecraft server, vanila server, command, scipt, javascript">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Download Addon!</title>
+    <link rel="apple-touch-icon"
+        href="https://media.discordapp.net/attachments/684563190150987900/1182891290384412763/AitJi.png?ex=6586585c&is=6573e35c&hm=024784597df02571b2ba4824e8330a93e1984958f09ae7ea08c16a890d9a2be0&=&width=252&height=252">
+    <link rel="icon"
+        href="https://media.discordapp.net/attachments/684563190150987900/1182891290384412763/AitJi.png?ex=6586585c&is=6573e35c&hm=024784597df02571b2ba4824e8330a93e1984958f09ae7ea08c16a890d9a2be0&=&width=252&height=252">
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "https://mcbe.vercel.app/",
+      "name": "Minecraft Addon!",
+      "description": "Download inwaitji addon!"
+    }
+  </script>
+    <link rel="stylesheet" href="../style/styles.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="icon">
+            <img src="../profile.png" alt="icon">
+            <h1>Available Downloads</h1>
+            <p>👋 Hello my name is <a href="https://www.youtube.com/@aitji.">AitJi</a></p>
+            <p>Please selection your addon down there!</p>
+            <br>
+            <p>HEY!!! I HAVE A BETA TEST WEBSITE FOR THIS <a href="../new">VISIT HERE</a></p>
+            <br>
+            <label for="addon-select">Choose an addon:</label>
+            <select id="addon-select" class="download-link">
+                <option value="rbchat">RBChat</option>
+                <option value="wanted">Wanted @stable</option>
+                <option value="allchat">All Chat</option>
+                <option value="antispam">Anti Spam</option>
+                <option value="blood_addon">Blood [ADDON] @stable</option>
+                <option value="blood_res">Blood [RES] @stable</option>
+                <option value="dash">Dash @stable</option>
+                <option value="healthametag">Health NameTag @stable</option>
+                <option value="invSee">INVSEE</option>
+                <option value="leaderboard">Leaderboard @stable</option>
+                <option value="moonaction">Moon Action @stable</option>
+                <option value="nametag">NameTag</option>
+                <option value="nearchat">NearChat</option>
+                <option value="policecaughtthief">Police Caught Thief @stable</option>
+                <option value="rankchat">Rank Chat</option>
+                <option value="realtime">Real Time @stable</option>
+                <option value="roomchat">Room Chat</option>
+                <option value="serverui">Server UI @stable</option>
+                <option value="teleportcompass">Teleport Compass @stable</option>
+                <option value="transfermoney">Transfer Money @stable</option>
+                <option value="unbreak">UN BREAK</option>
+                <option value="votekick">Vote Kick @stable</option>
+                <option value="ban">Ban/UnBan</option>
+            </select>
+            <button id="download-btn" class="download-btn">Download</button>
+            <button id="back" class="back" herf>Back!</button>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const downloadBtn = document.getElementById('download-btn')
+                const addonSelect = document.getElementById('addon-select')
+
+                downloadBtn.addEventListener('click', function () {
+                    const selectedAddon = addonSelect.value
+                    const downloadUrl = `../download/?lastest=${selectedAddon}`
+
+                    window.open(downloadUrl, '_blank')
+                })
+            })
+        </script>
+        <script src="../src/loader/main.js"></script>
+        <script src="../src/back_handel/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://mcbe.vercel.app</loc>
+      <lastmod>2023-01-01</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>https://mcbe.vercel.app/addon</loc>
+      <lastmod>2023-01-05</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.9</priority>
+   </url>
+   <url>
+      <loc>https://mcbe.vercel.app/download</loc>
+      <lastmod>2023-01-05</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://mcbe.vercel.app/givegen</loc>
+      <lastmod>2023-03-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://mcbe.vercel.app/tellraw</loc>
+      <lastmod>2023-03-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+   </url>
+   <url>
+      <loc>https://mcbe.vercel.app/tellraw</loc>
+      <lastmod>2023-03-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+   </url>
+   <url>
+      <loc>https://mcbe.vercel.app/profile</loc>
+      <lastmod>2023-03-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.4</priority>
+   </url>
+   <url>
+      <loc>https://mcbe.vercel.app/error.html</loc>
+      <lastmod>2023-04-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.3</priority>
+   </url>
+
+   <!-- This is just test page -->
+
+   <url>
+      <loc>https://mcbe.vercel.app/client.txt</loc>
+      <lastmod>2023-03-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.1</priority>
+   </url>
+</urlset>

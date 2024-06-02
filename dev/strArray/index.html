@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String to JavaScript Array</title>
+</head>
+
+<body>
+    <br>
+    <label for="inputBox">Input box:</label>
+    <br>
+    <textarea id="inputBox" rows="3" cols="70" placeholder="Enter your string here..."></textarea>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <label for="outputBox">Real-time output:</label>
+        <br>
+        <textarea id="outputBox" rows="30" cols="65" readonly></textarea>
+    </div>
+
+    <script>
+        function cs() {
+            const ib = document.getElementById('inputBox')
+            const ob = document.getElementById('outputBox')
+            const is = ib.value
+            const ps = is.split('\\n')
+            const js = ps.map(part => `\`${part}\`,`)
+            ob.value = js.join('\n')
+        }
+        document.getElementById('inputBox').addEventListener('input', cs)
+    </script>
+</body>
+
+</html>
