@@ -1,4 +1,4 @@
-import { addon, find_me, lastest_ver } from "../new/addondataa.js"
+import { addon, find_me, lastest_ver } from "../addondataa.js"
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("hashchange", handel)
     handel()
@@ -8,7 +8,7 @@ function handel() {
     var hash = window.location.hash.substr(1)
     var get = addon.find(key => key.readId.toLocaleLowerCase() === hash.toLowerCase())
     if (get) gen(`${get.title}`, `${get.description}`, get)
-    else window.location.href = '../new'
+    else window.location.href = '../'
 }
 
 function gen(title, description, get) {
@@ -23,7 +23,7 @@ function gen(title, description, get) {
         <div class="banner"><img class="addon-img" src="../img/stock/${imr}" alt="${get.title} Image"> </div>
             <h3 style="font-size: 20px;">${get.title}</h3>
             <p style="font-size: 18px; ">${get.description}</p>
-            <a href="../new">« ย้อนกลับไปหน้าแรก</a>
+            <a href="..">« ย้อนกลับไปหน้าแรก</a>
         </div>
     </div>
     `

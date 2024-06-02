@@ -1,8 +1,8 @@
-import { addon, find_me, lastest_ver } from "../new/addondataa.js"
+import { addon, find_me, lastest_ver } from "../addondataa.js"
 var hash = window.location.hash.substr(1)
 var get = addon.find(key => key.readId.toLocaleLowerCase() === hash.toLowerCase())
 try { get.imgSrc }
-catch { window.location.href = '../new' }
+catch { window.location.href = '../' }
 
 window.onload = function () {
     checkSub()

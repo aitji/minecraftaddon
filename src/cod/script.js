@@ -1,4 +1,4 @@
-import { addon, find_me, lastest_ver } from "../../new/addondataa.js";
+import { addon, find_me, lastest_ver } from "../../addondataa.js";
 
 const finding = window.location.search.substring(1).split('&');
 const display = document.getElementById('output');

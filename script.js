@@ -4,7 +4,7 @@
  */
 // alert("this website is currently in demo and right now it building, maybe this is just concept!")
 
-import { addon } from "../new/addondataa.js"
+import { addon } from "./addondataa.js"
 
 document.addEventListener("DOMContentLoaded", function () {
     var stableFirstCheckbox = document.getElementById("stableFirstCheckbox")
