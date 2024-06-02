@@ -1,15 +1,16 @@
 /* <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="./dev/styles.css"> */
 
-@font-face {
+/* @font-face {
     font-family: mcTEN;
-    src: url('../img/stock/MinecraftTen.ttf') format('truetype');
+    src: url('./img/stock/MinecraftTen.ttf') format('truetype');
 }
 
 @font-face {
     font-family: mcTH;
-    src: url('../img/stock/MinecraftTen.ttf') format('truetype');
-}
+    src: url('./img/stock/MinecraftTen.ttf') format('truetype');
+} */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Thai:wght@400;700&display=swap');
 
 ::-webkit-scrollbar {
     width: 0px;
@@ -25,7 +26,7 @@
 
 body {
     word-break: break-word;
-    font-family: 'Krub', 'Roboto', sans-serif;
+    font-family: 'Roboto Thai', 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
 
