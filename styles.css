@@ -12,6 +12,10 @@
 } */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Thai:wght@400;700&display=swap');
 
+tbody {
+    background-color: #000000;
+}
+
 ::-webkit-scrollbar {
     width: 0px;
 }
@@ -22,6 +26,34 @@
 
 ::-webkit-scrollbar-track {
     background-color: transparent;
+}
+
+.translate-container {
+    text-align: right;
+    margin: 10px;
+}
+
+#google_translate_element {
+    text-align: right;
+    margin: 10px;
+}
+
+#google_translate_element .goog-te-combo {
+    color: #000000;
+    background-color: #131415;
+    color: #ededed;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Animation adjustments */
+.progress {
+    background: repeating-linear-gradient(135deg, #FF0000 0 8.4px, rgba(255, 0, 0, 0.75) 0 16.8px) left/0% 100% no-repeat,
+        repeating-linear-gradient(135deg, rgba(255, 0, 0, 0.2) 0 8.4px, rgba(255, 0, 0, 0.1) 0 16.8px) left/100% 100%;
+}
+
+.spinner {
+    box-shadow: 22.4px 0 0 5.6px #FF0000, -22.4px 0 0 5.6px #FF0000;
 }
 
 body {
