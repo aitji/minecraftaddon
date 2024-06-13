@@ -37,8 +37,10 @@ document.getElementById("subscribeBtn").addEventListener("click", function () {
             if (!document.cookie.includes("subscribed=true")) document.cookie = "subscribed=true; expires=Fri, 31 Dec 9999 23:59:59 GMT"
             checkSub()
             window.location.href = "https://www.youtube.com/@aitji.?sub_confirmation=1"
+            setTimeout(() => {
+                checkSub()
+            }, 1000)
         }, 3000)
-        checkSub()
     }
 })
 
