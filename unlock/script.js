@@ -37,10 +37,8 @@ document.getElementById("subscribeBtn").addEventListener("click", function () {
             if (!document.cookie.includes("subscribed=true")) document.cookie = "subscribed=true; expires=Fri, 31 Dec 9999 23:59:59 GMT"
             checkSub()
             window.location.href = "https://www.youtube.com/@aitji.?sub_confirmation=1"
-            setTimeout(() => {
-                checkSub()
-            }, 1000)
         }, 3000)
+        checkSub()
     }
 })
 
@@ -68,7 +66,7 @@ function resetCookies() {
         return
     }
     if (confirm(`🍪 จะให้ลบข้อมูลคุ๊กกี้จริง ๆ หรอเราไม่ได้ใช้ 3rd คุ๊กกี้เลยนะ ;c\nข้อมูลคุ๊กกี้มีเพียง ${document.cookie.length} รายการ: ${document.cookie}`)) {
-        document.cookie = "subscribed=; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+        document.cookie = "subscribe= expires=Thu, 01 Jan 1970 00:00:00 GMT"
         alert("✅ All cookie data has been reset.\nReFresh Pages NOW!")
     }
 }
