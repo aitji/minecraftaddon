@@ -1,4 +1,4 @@
-export const lastest_ver = "1.20.80"
+export const lastest_ver = "1.21"
 
 export const addon = [
     {
@@ -115,15 +115,7 @@ export const addon = [
         isStable: true
     },
     {
-        title: "PoliceCaughtThief (ตำรวจจับโจร)",
-        description: "แอดออนนี้เพิ่มระบบตำรวจจับโจรแบบง่าย ๆ แต่มีการตั้งค่าที่เยอะมาก!",
-        imgSrc: 'policecaughtthief.jpg',
-        readId: "policecaughtthief",
-        pageHref: "#",
-        isStable: true
-    },
-    {
-        title: "AFK (อยู่หน้าใจหรือไม่)",
+        title: "AFK (อยู่หน้าจอหรือไม่)",
         description: "เพิ่ม structure สำหรับตรวจคนที่ afk ในเซิร์ฟเวอร์",
         imgSrc: 'afk.jpg',
         readId: "afk",
