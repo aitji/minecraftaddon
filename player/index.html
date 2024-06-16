@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+    <meta name="theme-color" content="#62272a">
+    <meta property="og:site_name" content="@aitji's video archive" />
+    <meta property="og:title" content="@aitji | video archive">
+    <meta property="og:description" content="this place i store the proof/video">
+    <meta property="og:image" href="../img/favicon.ico">
+    <meta property="og:url" content="https://mcbe.vercel.app/">
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://mcbe.vercel.app/">
+
+    <meta name="description" content="@aitji's | website!" />
+    <meta name="twitter:card" href="../img/favicon.ico" />
+    <meta name="twitter:site" content="@discord" />
+    <meta name="twitter:title" content="@aitji | video archive" />
+    <meta name="twitter:description" content="this place i store the proof/video" />
+    <meta property="og:locale:alternate" content="en" />
+
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="aitji">
+    <meta name="keywords"
+        content="Minecraft, minecraft, mc, minecraftbedrock, bedrock, mcbe, thai, server, mmo, minecraftpe, pe, cmg, aitji, ait, cmgelement, element, mcpe, mc server, minecraft server, vanila server, command, scipt, javascript">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> | ! DIDN'T USE ! -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Krub&display=swap">
+
+    <meta name="theme-color" content="#62272a">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+    <link rel="icon" sizes="192x192" href="../img/android-chrome-192x192.png">
+    <link rel="icon" sizes="512x512" href="../img/android-chrome-512x512.png">
+    <script type="application/ld+json">
+    {"@context": "http://schema.org","@type": "Organization","url": "https://mcbe.vercel.app","name": "@aitji's addon!","description": "hi, im aitji a cool developer, im love silly sand block game!"}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@aitji's video archive</title>
+  <link rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="profile-pic">
+                <img src="../img/favicon.ico" alt="Profile Picture">
+            </div>
+            <div>
+                <h1 class="addon-title">@aitji's</h1>
+                <p class="addon-description">สวัสดี👋 ที่นี่เราใช้ในการเก็บวิดิโอต่าง ๆ ให้สำหรับส่งเพื่อไม่ต้องส่งลง
+                    youtube! หากชื่อไฟล์ถูกต้องสามารถเปิดดูได้เลย~</p>
+            </div>
+        </div>
+
+        <div class="banner">
+            <video id="videoPlayer" class="addon-img" controls autoplay>
+                Your browser does not support the video tag :-;
+            </video>
+        </div>
+
+        <div class="addon-card">
+            <p id="videoDescription">กำลังโหลดข้อมูล</p>
+            <a href="../" class="read-more">ย้อนกลับ</a>
+            <span class="addon-stable-tag">Stable Version</span>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () { hash() })
+        function hash() {
+            const h = window.location.hash.substr(1)
+            const vs = {
+                thanadonkubi: {
+                    path: '../player/thanadonkubi.mp4',
+                    description: 'วิดิโอนี้ทำขึ้นเพื่อส่งให้ thanadonkubi ในดิสคอสห้อง "กดใช้ อุปกรณ์ ที่มีให้ เช่น แอปเปิ้ล แล้ว หลุดทันที" อาจเกิดขึ้นจากเครื่องมีประสิทธิภาพต่ำ ._.'
+                },
+            }
+
+            const vp = document.getElementById('videoPlayer')
+            const vd = document.getElementById('videoDescription')
+
+            if (vs[h]) {
+                const s = document.createElement('source')
+                s.src = vs[h].path
+                s.type = 'video/mp4'
+                vp.appendChild(s)
+                vd.textContent = vs[h].description
+            } else {
+                vd.textContent = `ไม่พบวิดิโอที่มีชื่อ '${h}'`
+                console.error(`Video source for '${h}' not found.`)
+            }
+        }
+    </script>
+
+</body>
+
+</html>
