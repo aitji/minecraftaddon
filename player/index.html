@@ -78,11 +78,13 @@
             const vs = {
                 what: {
                     path: '../player/what.mp4',
-                    description: 'just a test vid'
+                    description: 'just a test vid',
+                    type: 'video/mp4'
                 },
                 picker: {
-                    path: '../player/picker.mp4',
-                    description: 'picker dm pic'
+                    path: '../player/picker.jpg',
+                    description: 'picker dm pic',
+                    type: 'image/jpg'
                 },
             }
 
@@ -92,7 +94,7 @@
             if (vs[h]) {
                 const s = document.createElement('source')
                 s.src = vs[h].path
-                s.type = 'video/mp4'
+                s.type = vs[h].type || 'video/mp4'
                 vp.appendChild(s)
                 vd.textContent = vs[h].description
             } else {
