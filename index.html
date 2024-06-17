@@ -46,6 +46,41 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <script type="text/javascript"
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" async src="https://cdn.reamaze.com/assets/reamaze-loader.js"></script>
+    <script type="text/javascript">
+        var _support = _support || { 'ui': {}, 'user': {} };
+        _support['account'] = 'minecraftbe';
+        _support['ui']['contactMode'] = 'mixed';
+        _support['ui']['enableKb'] = 'true';
+        _support['ui']['styles'] = {
+            widgetColor: 'rgba(16, 162, 197, 1)',
+            gradient: true,
+        };
+        _support['ui']['shoutboxFacesMode'] = 'default';
+        _support['ui']['shoutboxHeaderLogo'] = true;
+        _support['ui']['widget'] = {
+            displayOn: 'all',
+            fontSize: 'default',
+            allowBotProcessing: true,
+            slug: 'https-slash-slash-mcbe-dot-vercel-dot-app-chat-slash-contact-form-shoutbox',
+            label: {
+                text: 'บอกให้รู้ได้นะถ้ามีคำถามอะไร! &#128522;',
+                mode: "notification",
+                delay: 3,
+                duration: 30,
+                primary: 'ฉันมีคำถาม',
+                secondary: 'ไม่หละ ขอบคุณ',
+                sound: true,
+            },
+            position: 'bottom-right',
+            mobilePosition: 'bottom-right'
+        };
+        _support['apps'] = {
+            faq: { "enabled": true },
+            recentConversations: {},
+            orders: {}
+        };
+    </script>
 </head>
 
 
@@ -75,80 +110,79 @@
             การอัพเดทแอดออนอาจมีการล่าช้า เนื่องด้วยเวลาและโอกาศของผมเป็นสำคัญ จึงเรียนมาเพื่อทราบ
             (แล้วอย่ามาเร่งให้ฉันอัพเดทแอดออน!~)</p>
         <br>
-
-        <!-- settings -->
-        <div class="settings-icon" onclick="openSettings()">
-            <img src="../img/stock/setting.png" alt="Settings Icon">
-        </div>
-
-        <!-- modal -->
-        <div id="settings-modal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeSettings()">&times;</span>
-                <h2>แอดออนของผม:</h2>
-                <p>แอดออนที่ผมแจกในช่องทั้งหมดจะถูกรวบรวมอยู่ในเว็บไซต์นี้ทั้งหมด!
-                    แอดออนเหล่านี้ผมสร้างเพื่อให้นำไปใช้ในเซิร์ฟเวอร์ของคุณได้แบบฟรี ๆ</p>
-                <p style="line-height: 30px"><span class="showcaseStable">@stable</span>
-                    คือแอดออนที่รองรับสามารถโหลดแล้วโหลดเลยหลังอัพเดทตัวเกมไม่ต้องกลับมาโหลดอีก</p>
-                <p style="line-height: 30px"><span class="showcaseBeta">⚠️ BETA API</span>
-                    คือแอดออนที่โหลดแล้วต้องอัพเดทแอดออนหลังอัพเดทตัวเกมไปแล้ว</p>
-                <hr>
-                <br>
-                <h3>สิ่งที่ <a style="font-weight: bold; text-decoration: underline;">ไม่อนุญาติ</a> ให้กระทำ</h3>
-                <ul class="list">
-                    <li>ผมไม่อนุญาติให้นำแอดออนไปแจกต่อโดยไม่ใส่เครดิต หรือแก้ไขปรับเปลี่ยนแล้วนำไปแจกต่อก็ตาม</li>
-                    <li>ผมไม่อนุญาติให้นำแอดออนของผมไปใช้ในเชิงพาณิชย์</li>
-                </ul>
-                <h3>สิ่งที่ <a style="font-weight: bold; text-decoration: underline; color: lime;">อนุญาติ</a>
-                    ให้กระทำได้</h3>
-                <ul class="list">
-                    <li>ผมอนุญาติให้ใช้แอดออนบนเซิร์ฟเวอร์ไมน์คราฟต์ของคุณ</li>
-                    <li>ผมอนุญาติให้นำแอดออนของผมไปใช้ในการศึกษาโค๊ดและ อื่น ๆ</li>
-                    <li>ผมอนุญาติให้นำแอดออนของผมไปแก้ไขเพื่อใช้ในเซิร์ฟเวอร์ของคุณ</li>
-                </ul>
-                <hr>
-                <br>
-                <h2>ตั้งค่าเว็บไซต์</h2>
-                <div class="toggle-container" id="stableFirst">
-                    <label class="switch">
-                        <input type="checkbox" id="stableFirstCheckbox" onchange="saveSettings()">
-                        <span class="slider"></span>
-                    </label>
-                    <p><span class="text">แสดงแอดออน @stable ก่อนเสมอ</span></p>
-                </div>
-                <div class="toggle-container" id="darkmode">
-                    <label class="switch">
-                        <input type="checkbox" id="darkModeCheckbox" onchange="saveSettings()">
-                        <span class="slider"></span>
-                    </label>
-                    <p><span class="text">⚠️ ธีมสีเข้ม (ยังไม่ได้ทำนะ~!)</span></p>
-                </div>
-                <div class="toggle-container" id="lowqu">
-                    <label class="switch">
-                        <input type="checkbox" id="lowqu" onchange="saveSettings()">
-                        <span class="slider"></span>
-                    </label>
-                    <p><span class="text">⚠️ รูปภาพขนาดเล็กลง เพื่อทำให้เว็บไซต์โหลดเร็วขึ้น (ยังไม่ได้ทำนะ~!)</span>
-                    </p>
-                </div>
-                <div class="toggle-container" id="data_collect">
-                    <label class="switch">
-                        <input type="checkbox" id="data_collect" onchange="saveSettings()">
-                        <span class="slider"></span>
-                    </label>
-                    <p><span class="text">⚠️ เก็บข้อมูลการตั้งค่าไว้ใน cookie! (ยังไม่ได้ทำนะ~! &
-                            ยังไม่ได้เก็บด้วย)</span></p>
-                </div>
-                <div class="toggle-container" id="cacheImg">
-                    <label class="switch">
-                        <input type="checkbox" id="cacheImg" onchange="saveSettings()">
-                        <span class="slider"></span>
-                    </label>
-                    <p><span class="text">⚠️ บันทึกรูปภาพลงแคชเพื่อเปิดเว็บไซต์ครั้งต่อไปเร็วขึ้น
-                            (ยังไม่ได้ทำให้เปิดปิดได้~!)</span></p>
-                </div>
+        <div class="modal-content">
+            <span class="close" onclick="closeSettings()">&times;</span>
+            <h2>แอดออนของผม:</h2>
+            <p>แอดออนที่ผมแจกในช่องทั้งหมดจะถูกรวบรวมอยู่ในเว็บไซต์นี้ทั้งหมด!
+                แอดออนเหล่านี้ผมสร้างเพื่อให้นำไปใช้ในเซิร์ฟเวอร์ของคุณได้แบบฟรี ๆ</p>
+            <p style="line-height: 30px"><span class="showcaseStable">@stable</span>
+                คือแอดออนที่รองรับสามารถโหลดแล้วโหลดเลยหลังอัพเดทตัวเกมไม่ต้องกลับมาโหลดอีก</p>
+            <p style="line-height: 30px"><span class="showcaseBeta">⚠️ BETA API</span>
+                คือแอดออนที่โหลดแล้วต้องอัพเดทแอดออนหลังอัพเดทตัวเกมไปแล้ว</p>
+            <hr>
+            <br>
+            <h3>สิ่งที่ <a style="font-weight: bold; text-decoration: underline;">ไม่อนุญาติ</a> ให้กระทำ</h3>
+            <ul class="list">
+                <li>ผมไม่อนุญาติให้นำแอดออนไปแจกต่อโดยไม่ใส่เครดิต หรือแก้ไขปรับเปลี่ยนแล้วนำไปแจกต่อก็ตาม</li>
+                <li>ผมไม่อนุญาติให้นำแอดออนของผมไปใช้ในเชิงพาณิชย์</li>
+            </ul>
+            <h3>สิ่งที่ <a style="font-weight: bold; text-decoration: underline; color: lime;">อนุญาติ</a>
+                ให้กระทำได้</h3>
+            <ul class="list">
+                <li>ผมอนุญาติให้ใช้แอดออนบนเซิร์ฟเวอร์ไมน์คราฟต์ของคุณ</li>
+                <li>ผมอนุญาติให้นำแอดออนของผมไปใช้ในการศึกษาโค๊ดและ อื่น ๆ</li>
+                <li>ผมอนุญาติให้นำแอดออนของผมไปแก้ไขเพื่อใช้ในเซิร์ฟเวอร์ของคุณ</li>
+            </ul>
+            <hr>
+            <br>
+            <h2>ตั้งค่าเว็บไซต์</h2>
+            <div class="toggle-container" id="stableFirst">
+                <label class="switch">
+                    <input type="checkbox" id="stableFirstCheckbox" onchange="saveSettings()">
+                    <span class="slider"></span>
+                </label>
+                <p><span class="text">แสดงแอดออน @stable ก่อนเสมอ</span></p>
+            </div>
+            <div class="toggle-container" id="darkmode">
+                <label class="switch">
+                    <input type="checkbox" id="darkModeCheckbox" onchange="saveSettings()" checked disabled>
+                    <span class="slider"></span>
+                </label>
+                <p><span class="text">⚠️ ธีมสีเข้ม</span></p>
+            </div>
+            <div class="toggle-container" id="lowqu">
+                <label class="switch">
+                    <input type="checkbox" id="lowqu" onchange="saveSettings()" disabled>
+                    <span class="slider"></span>
+                </label>
+                <p><span class="text">⚠️ รูปภาพขนาดเล็กลง เพื่อทำให้เว็บไซต์โหลดเร็วขึ้น)</span>
+                </p>
+            </div>
+            <div class="toggle-container" id="data_collect">
+                <label class="switch">
+                    <input type="checkbox" id="data_collect" onchange="saveSettings()" disabled>
+                    <span class="slider"></span>
+                </label>
+                <p><span class="text">⚠️ เก็บข้อมูลการตั้งค่าไว้ใน cookie!</span></p>
+            </div>
+            <div class="toggle-container" id="cacheImg">
+                <label class="switch">
+                    <input type="checkbox" id="cacheImg" onchange="saveSettings()" checked disabled>
+                    <span class="slider"></span>
+                </label>
+                <p><span class="text">⚠️ บันทึกรูปภาพลงแคชเพื่อเปิดเว็บไซต์ครั้งต่อไปเร็วขึ้น</span></p>
             </div>
         </div>
+
+        <!-- settings -->
+        <!-- <div class="settings-icon" onclick="openSettings()">
+            <img src="../img/stock/setting.png" alt="Settings Icon">
+        </div> -->
+
+        <!-- modal -->
+        <!-- <div id="settings-modal" class="modal">
+
+        </div> -->
 
         <br>
         <hr>
