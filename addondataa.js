@@ -200,7 +200,7 @@ export const find_me = [
     // http://127.0.0.1:5500/download/?lastest=antispam
     // http://127.0.0.1:5500/download/?ver1.20.40=antispam
     // https://mcbe.vercel.app/download/?lastest=allchat
-    { url: "multiaddon", link: "https://github.com/aitji/multiAddon/releases/download/1.1.5/multiAddon.mcpack" },
+    { url: "multiaddon", link: "https://github.com/aitji/multiAddon/releases/download/1.1.6/multiAddon.mcpack" },
     { url: "afk", link: "https://github.com/aitji/aitji.addon/raw/main/Other/AFK/Download.mcpack" },
     { url: "allchat", link: "https://github.com/aitji/aitji.addon/raw/main/_ver_/All%20Chat/Download.mcpack" },
     { url: "antispam", link: "https://github.com/aitji/aitji.addon/raw/main/_ver_/AntiSpam/Download.mcpack" },
