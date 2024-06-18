@@ -50,6 +50,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@aitji's Addon</title>
     <link rel="stylesheet" type="text/css" href="../styles.css">
+    <script type="text/javascript" async src="https://cdn.reamaze.com/assets/reamaze-loader.js"></script>
+    <script type="text/javascript">
+        var _support = _support || { 'ui': {}, 'user': {} };
+        _support['account'] = 'minecraftbe';
+        _support['ui']['contactMode'] = 'mixed';
+        _support['ui']['enableKb'] = 'true';
+        _support['ui']['styles'] = {
+            widgetColor: 'rgb(197, 16, 16)',
+            gradient: true,
+        };
+        _support['ui']['shoutboxFacesMode'] = 'default';
+        _support['ui']['shoutboxHeaderLogo'] = true;
+        _support['ui']['widget'] = {
+            displayOn: 'all',
+            fontSize: 'default',
+            allowBotProcessing: true,
+            slug: 'https-slash-slash-mcbe-dot-vercel-dot-app-chat-slash-contact-form-shoutbox',
+            label: {
+                text: 'บอกให้รู้ได้นะถ้ามีคำถามอะไร!;',
+                mode: "notification",
+                delay: 3,
+                duration: 30,
+                primary: 'ฉันมีคำถาม',
+                secondary: 'ไม่หละ ขอบคุณ',
+                sound: true,
+            },
+            position: 'bottom-right',
+            mobilePosition: 'bottom-right'
+        };
+        _support['apps'] = {
+            faq: { "enabled": true },
+            recentConversations: {},
+            orders: {}
+        };
+    </script>
 </head>
 
 <body>
@@ -61,8 +96,7 @@
             <h1>@aitji's!ㅤ</h1>
             <a href="https://www.youtube.com/@aitji."><img id="sc" src="../img/yt.svg" alt="YouTube Button"></a>
 
-            <a href="https://discord.gg/mwJz7SfDed"><img id="sc" src="../img/discord.svg"
-                    alt="Discord Button"></a>
+            <a href="https://discord.gg/mwJz7SfDed"><img id="sc" src="../img/discord.svg" alt="Discord Button"></a>
             <br>
         </div>
     </div>

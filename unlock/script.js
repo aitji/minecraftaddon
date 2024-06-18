@@ -21,13 +21,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function checkSub() {
     var buttonContainer = document.getElementById("buttonContainer")
     if (document.cookie.includes("subscribed=true")) {
-        document.getElementById('dynamic_text').innerHTML = `คุณสามารถโหลดแอดออน <a>${get.title} </a> ได้เลย~!<a id="back"
-    href="../pages/#${get.readId}"> (โหลดแล้วสามารถกดย้อนกลับที่นี่) </a>`
-        buttonContainer.innerHTML = "<p>ดูเหมือนว่ากดติดตามอยู่แล้วนิหน่า งั้นโหลดได้เลย ๆ</p><button id='subed'>โหลดแอดออน! 📥</button>"
-        const button = document.getElementById("subed")
+        simulateLoading(40)
+        setTimeout(function () {
+            document.getElementById('dynamic_text').innerHTML = `คุณสามารถโหลดแอดออน <a>${get.title} </a> ได้เลย~!<a id="back"
+                href="../pages/#${get.readId}"> (โหลดแล้วสามารถกดย้อนกลับที่นี่) </a>`
+            buttonContainer.innerHTML = "<p>ดูเหมือนว่ากดติดตามอยู่แล้วนิหน่า งั้นโหลดได้เลย ๆ</p><button id='subed'>โหลดแอดออน! 📥</button>"
+            const button = document.getElementById("subed")
 
-        button.addEventListener("click", () => redirectToAddon())
-    }
+            button.addEventListener("click", () => redirectToAddon())
+        }, 900)
+    } else { }
 }
 
 document.getElementById("subscribeBtn").addEventListener("click", function () {
@@ -42,12 +45,12 @@ document.getElementById("subscribeBtn").addEventListener("click", function () {
     }
 })
 
-function simulateLoading() {
+function simulateLoading(de = 95) {
     var loadingBar = document.querySelector(".loading-bar")
     loadingBar.style.width = "0%"
     var width = 0
     var interval = setInterval(function () {
-        width += (100 - width) / 95
+        width += (100 - width) / de
         if (width >= 100) clearInterval(interval)
         loadingBar.style.width = width + "%"
     }, 10)

@@ -413,3 +413,15 @@ input:checked+.slider:before {
         max-width: 100%;
     }
 }
+
+#reamaze-widget-icon {
+    width: 58px;
+    height: 58px;
+    display: inline-block;
+    background: url('./img/favicon.ico') no-repeat center center;
+    background-size: contain;
+}
+
+#reamaze-widget-icon svg {
+    display: none;
+}
