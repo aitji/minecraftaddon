@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Thai:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto Thai', 'Roboto', sans-serif;
+    background-image: radial-gradient(#181a1b 2px, transparent 2px), radial-gradient(#181a1b 2px, transparent 2px);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+    background-color: #131415;
+    color: #c9c7c4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 10%;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: auto;
+}
+
+.profile-info h1 {
+    color: red;
+    margin: 10px 0;
+}
+
+.about-me, .skills, .projects, .gallery {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list li:before {
+    content: "•";
+    color: rgb(135, 78, 78);
+    margin-right: 5px;
+}
+
+.addon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.addon-card {
+    background-color: #242727;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.addon-card:hover {
+    transform: translateY(-5px);
+}
+
+.addon-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    font-size: 15px;
+    background-color: red;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: auto;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    transition: color, background-color 0.5s ease;
+}
+
+.read-more:hover {
+    background-color: #ffffff;
+    color: red;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #35393b;
+    margin-top: 20px;
+}
+
+.image-gallery, .video-gallery {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.image-gallery img {
+    border-radius: 5px;
+    width: 200px;
+    height: auto;
+    cursor: grab;
+    transition: transform 0.3s ease;
+}
+
+.image-gallery img:active {
+    cursor: grabbing;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.1);
+}
+
+.video-gallery video {
+    border-radius: 5px;
+    width: 300px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-pic {
+        margin-bottom: 10px;
+    }
+
+    .image-gallery img {
+        width: 150px;
+    }
+
+    .video-gallery video {
+        width: 100%;
+    }
+}
