@@ -1,9 +1,10 @@
-export const lastest_ver = "1.21"
+export const lastest_ver = "1.21.20"
 
 export const addon = [
     {
         title: "MultiAddon (หลายแอดออน)",
         description: "(ไม่มีในช่อง) แต่อยากเอามาใส่",
+        longDes: 'ไม่มีไร ๆ',
         imgSrc: 'pack.png',
         readId: "multiaddon",
         pageHref: "#",

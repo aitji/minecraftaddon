@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@aitji's | profile</title>
     <link rel="apple-touch-icon"
-        href="https://media.discordapp.net/attachments/943696635219824680/1216330186157461544/profile.png?ex=65fffec2&is=65ed89c2&hm=91ee092c071f767d44fc71630d39422009f94201cc095702f15f305b0f42b634&=&format=webp&quality=lossless&width=671&height=671">
+        href="../img/favicon.ico">
     <meta name="theme-color" content="#62272a">
     <meta property="og:site_name" content="@aitji's profile" />
     <meta property="og:title" content="@aitji | profile">
     <meta property="og:description" content="hi, im aitji a cool developer, im love silly sand block game">
     <meta property="og:image"
-        content="https://media.discordapp.net/attachments/943696635219824680/1216330186157461544/profile.png?ex=65fffec2&is=65ed89c2&hm=91ee092c071f767d44fc71630d39422009f94201cc095702f15f305b0f42b634&=&format=webp&quality=lossless&width=671&height=671">
+        content="../img/favicon.ico">
     <meta property="og:url" content="https://mcbe.vercel.app/">
     <meta charset="UTF-8">
     <link rel="canonical" href="https://mcbe.vercel.app/">
 
     <meta name="description" content="@aitji's | website!" />
     <meta name="twitter:card"
-        content="https://media.discordapp.net/attachments/943696635219824680/1216330186157461544/profile.png?ex=65fffec2&is=65ed89c2&hm=91ee092c071f767d44fc71630d39422009f94201cc095702f15f305b0f42b634&=&format=webp&quality=lossless&width=671&height=671" />
+        content="../img/favicon.ico" />
     <meta name="twitter:site" content="@discord" />
     <meta name="twitter:title" content="@aitji | profile" />
     <meta name="twitter:description" content="hi, im aitji a cool developer, im love silly sand block game" />
@@ -43,7 +43,7 @@
     {
       "@context": "http://schema.org",
       "@type": "Organization",
-      "url": "https://aitji.vercel.app/profile",
+      "url": "https://mcbe.vercel.app",
       "name": "@aitji's profile!",
       "description": "hi, im aitji a cool developer, im love silly sand block game!"
     }
@@ -54,7 +54,7 @@
     <div id="bar"></div>
     <div id="banner" rel="preload" as="image"></div>
     <div id="profile-container">
-        <img id="profile-pic" src="../img/favicon.ico" alt="Profile Picture">
+        <img id="profile-pic" src="../img/favicon.ico" alt="aitji">
         <strong>
             <h1 id="name"></h1>
         </strong>

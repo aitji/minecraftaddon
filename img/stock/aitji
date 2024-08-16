@@ -89,7 +89,7 @@ function create(
     } else {
         var tagR = document.createElement("span")
         tagR.classList.add("addon-beta-tag")
-        tagR.textContent = "⚠️ BETA API"
+        tagR.textContent = "@beta"
         card.appendChild(tagR)
     }
 
