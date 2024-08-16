@@ -52,8 +52,7 @@ function gen(title, description, get) {
     <div class="addon-details">
         <br><hr>
         <h2>${title}</h2>
-        <p>${description}</p>
-        <p>${longDes}</p>
+        <p>${longDes || description}</p>
         <p>${stableMsg}</p>
         <p>แอดออนเวอชั่น: <a>${lastest_ver}</a></p>
         <br>
