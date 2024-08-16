@@ -2,9 +2,20 @@
  * @author aitji
  * please don't stolen my work ok?
  */
-// alert("this website is currently in demo and right now it building, maybe this is just concept!")
-
 import { addon } from "./addondataa.js"
+
+// blur image onload
+const style = document.createElement('style')
+style.innerHTML = `
+  .blur {
+    filter: blur(10px)
+    transition: filter 0.3s ease
+  }
+  .blur.loaded {
+    filter: none
+  }
+`
+document.head.appendChild(style)
 
 document.addEventListener("DOMContentLoaded", function () {
     var stableFirstCheckbox = document.getElementById("stableFirstCheckbox")
@@ -12,21 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     stableFirstCheckbox.addEventListener("change", function () {
         generate(stableFirstCheckbox.checked)
-        if (stableFirstCheckbox.checked) {
-            var loadingBar = document.getElementById("loadingBar")
-            loadingBar.classList.add("loading")
-        } else {
-            var loadingBar = document.getElementById("loadingBar")
-            loadingBar.classList.remove("loading")
-        }
+        var loadingBar = document.getElementById("loadingBar")
+        loadingBar.classList.toggle("loading", stableFirstCheckbox.checked)
     })
 
     darkModeCheckbox.addEventListener("change", function () {
-        if (darkModeCheckbox.checked) {
-            document.body.classList.add("dark-mode")
-        } else {
-            document.body.classList.remove("dark-mode")
-        }
+        document.body.classList.toggle("dark-mode", darkModeCheckbox.checked)
     })
 })
 
@@ -46,10 +48,11 @@ function create(
     card.style.transition = "opacity 0.6s ease, transform 0.6s ease"
 
     var img = document.createElement("img")
-    img.classList.add("addon-img")
+    img.classList.add("addon-img", "blur")
     img.src = `../img/stock/${imgSRC}`
-    card.appendChild(img)
     img.alt = title + " Image"
+    img.addEventListener("load", () => img.classList.add("loaded")) // Remove blur when image is loaded
+    card.appendChild(img)
 
     var aTitle = document.createElement("h3")
     aTitle.classList.add("addon-title")
@@ -94,22 +97,8 @@ function generate(stableFirst = false) {
     addonGrid.innerHTML = ""
     var addons = addon
     if (stableFirst) {
-        addons.sort((a, b) => {
-            if (a.isStable && !b.isStable) return -1       // a comes before b
-            else if (!a.isStable && b.isStable) return 1   // b comes before a
-            else return 0                                  // no change in order
-
-        })
+        addons.sort((a, b) => a.isStable === b.isStable ? 0 : (a.isStable ? -1 : 1))
     }
-    /**
-     * else {
-     *     addons.sort((a, b) => {
-     *         if (a.isStable && !b.isStable) return 1        // b comes before a
-     *         else if (!a.isStable && b.isStable) return -1  // a comes before b
-     *         else return 0                                  // no change in order
-     *     })
-     * }
-    */
 
     addons.forEach((addon, index) => {
         create(addon.title, addon.description, addon.imgSrc, addon.readId, addon.pageHref, addon.isStable)
@@ -123,46 +112,12 @@ function generate(stableFirst = false) {
 
 generate(false)
 
-var modal = document.getElementById("settings-modal")
-var settingsIcon = document.querySelector(".settings-icon")
-var closeBtn = document.querySelector(".close")
-
-function openModal() {
-    modal.style.display = "block"
-    document.body.classList.add('modal-open')
-}
-function closeModal() {
-    modal.style.display = "none"
-    document.body.classList.remove('modal-open')
-}
-
-settingsIcon.onclick = function () {
-    if (modal.style.display === "block") closeModal()
-    else openModal()
-}
-
-closeBtn.onclick = function () { closeModal() }
-window.onclick = function (ev) { if (ev.target == modal) closeModal() }
-window.onkeydown = function (ev) { if (ev.key === "Escape") closeModal() }
-
-function saveSettings() {
-    var stableFirst = document.getElementById("stableFirstCheckbox").checked
-    var darkMode = document.getElementById("darkModeCheckbox").checked
-    var lowqu = document.getElementById("lowqu").checked
-    var dataCollect = document.getElementById("data_collect").checked
-    var cacheImg = document.getElementById("cacheImg").checked
-
-    document.cookie = "stableFirst=" + stableFirst
-    document.cookie = "darkMode=" + darkMode
-    document.cookie = "lowqu=" + lowqu
-    document.cookie = "dataCollect=" + dataCollect
-    document.cookie = "cacheImg=" + cacheImg
-}
-
-/** block */
+/**
+ * sorry for block this drag content
+ * */
 if (window.location.hostname !== '127.0.0.1') {
     document.body.classList.add('no-select')
     setTimeout(() => { document.querySelectorAll('img').forEach(img => { img.draggable = false }) }, 300)
-    window.addEventListener('contextmenu', function (ev) { ev.preventDefault() })
-    document.addEventListener('dragstart', function (event) { if (event.target.tagName.toLowerCase() === 'a') event.preventDefault() })
+    window.addEventListener('contextmenu', ev => ev.preventDefault())
+    document.addEventListener('dragstart', event => { if (event.target.tagName.toLowerCase() === 'a') event.preventDefault() })
 }
