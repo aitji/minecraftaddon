@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+    <meta name="theme-color" content="#62272a">
+    <meta property="og:site_name" content="@aitji's Slider Control" />
+    <meta property="og:title" content="@aitji | Slider Control">
+    <meta property="og:description" content="aitji slider control version!">
+    <meta property="og:image" content="../img/favicon.ico">
+    <meta property="og:url" content="https://mcbe.vercel.app/">
+    <link rel="canonical" href="https://mcbe.vercel.app/">
+
+    <meta name="description" content="@aitji's | website!" />
+    <meta name="twitter:card" content="../img/favicon.ico" />
+    <meta name="twitter:site" content="@discord" />
+    <meta name="twitter:title" content="@aitji | Slider Control" />
+    <meta name="twitter:description" content="aitji slider control version!" />
+    <meta property="og:locale:alternate" content="en" />
+
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="aitji">
+    <meta name="keywords"
+        content="Slider Control, js, Minecraft, minecraft, mc, minecraftbedrock, bedrock, mcbe, thai, server, mmo, minecraftpe, pe, cmg, aitji, ait, cmgelement, element, mcpe, mc server, minecraft server, vanilla server, command, script, javascript">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" sizes="192x192" href="../img/android-chrome-192x192.png">
+    <link rel="icon" sizes="512x512" href="../img/android-chrome-512x512.png">
+    <script
+        type="application/ld+json">{"@context": "http://schema.org","@type": "Organization","url": "https://mcbe.vercel.app","name": "@aitji's addon!","description": "hi, im aitji a cool developer, im love silly sand block game!"}</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@aitji's | Slider Control</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #eee;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 50%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff5555;
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .slider-container {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 8px;
+            padding: 5px;
+            background-color: #222;
+        }
+
+        .slider-label {
+            width: 100px;
+        }
+
+        .slider {
+            width: 100%;
+            border-radius: 8px;
+            accent-color: red;
+        }
+
+        .lock,
+        .delete {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .slider-name {
+            width: 80px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            padding: 5px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #eee;
+        }
+
+        .export-box {
+            background-color: #222;
+            padding: 10px;
+            margin-top: 20px;
+            display: none;
+            border-radius: 8px;
+        }
+
+        .error {
+            color: red;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        button {
+            margin-top: 10px;
+            background-color: #ff5555;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 8px;
+        }
+
+        button:hover {
+            background-color: #ff3333;
+        }
+
+        a {
+            color: red;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+            border-radius: 30%;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+
+            .slider-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .slider-name {
+                margin-bottom: 5px;
+                width: 97%;
+            }
+
+            .slider {
+                width: 98%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Slider Control</h1>
+        <p>Hey I'm <a href="https://youtube.com/@aitji.">@aitji</a> Customize your sliders and export the values.</p>
+        <div id="sliders"></div>
+        <button id="addSlider">Create Slider</button>
+        <button id="exportCode" disabled>Export</button>
+        <div class="export-box" id="exportBox"></div>
+        <div class="error" id="error">waiting for input. .</div>
+        <label><input type="checkbox" id="floatToggle"> Show float numbers</label>
+    </div>
+
+    <script>
+        const floatCheck = document.getElementById('floatToggle')
+        const slidersDiv = document.getElementById('sliders')
+        const exportBox = document.getElementById('exportBox')
+        const errorDiv = document.getElementById('error')
+        let track = []
+
+        const calSlider = () => {
+            let index = 0
+            const sl = slidersDiv.querySelectorAll('.slider')
+            sl.forEach(s => index += parseFloat(s.value))
+            sl.forEach(s => {
+                const parent = s.parentElement
+                if (parent.dataset.locked === "false") {
+                    const newValue = (parseFloat(s.value) / index) * 100
+                    s.value = newValue
+                    s.nextElementSibling.textContent = `${newValue.toFixed(floatCheck.checked ? 2 : 0)}${floatCheck.checked ? '' : '%'}`
+                }
+            })
+
+            const total = Array.from(slidersDiv.querySelectorAll('.slider')).reduce((acc, slider) => acc + parseFloat(slider.value), 0)
+            if (Math.abs(total - 100) > 0.01) {
+                errorDiv.style.color = 'red'
+                errorDiv.textContent = 'The sum of all sliders must be 100!'
+                errorDiv.style.display = 'block'
+            } else {
+                errorDiv.style.color = 'green'
+                errorDiv.textContent = 'The sum of all sliders is now  100!'
+                errorDiv.style.display = 'block'
+            }
+        }
+
+        const update = (index) => {
+            if (track.includes(index)) track.splice(track.indexOf(index), 1)
+            track.unshift(index)
+            track = track.filter((v, i, a) => a.indexOf(v) === i).slice(0, 5)
+        }
+
+        const exportBoxed = () => {
+            let code = "const sliders = {\n"
+            const sliders = slidersDiv.querySelectorAll('.slider-container')
+            sliders.forEach((container, index) => {
+                const name = container.querySelector('.slider-name').value || `slider${index + 1}`
+                const value = parseFloat(container.querySelector('.slider').value)
+                code += ` ${name}: ${value.toFixed(floatCheck.checked ? 2 : 0)}${index < sliders.length - 1 ? ',' : ''}\n`
+            })
+            code += '}'
+            exportBox.textContent = code
+            exportBox.style.display = 'block'
+        }
+
+        slidersDiv.addEventListener('input', (e) => {
+            if (e.target.classList.contains('slider')) {
+                const parent = e.target.parentElement
+                const index = Array.from(slidersDiv.children).indexOf(parent)
+                update(index)
+                calSlider()
+                exportBoxed()
+            }
+        })
+
+        document.getElementById('addSlider').addEventListener('click', () => {
+            const contain = document.createElement('div')
+            contain.classList.add('slider-container')
+            contain.dataset.locked = 'false'
+            contain.innerHTML = `
+                <input type="text" class="slider-name" placeholder="Slider Name">
+                <input type="range" class="slider" min="0" max="100" value="50">
+                <span class="slider-value">50</span> <!-- Added span to show value -->
+                <span class="lock">🔓</span>
+                <span class="delete">🗑️</span>
+            `
+            slidersDiv.appendChild(contain)
+
+            if (slidersDiv.children.length > 1) {
+                const names = slidersDiv.querySelectorAll('.slider-name')
+                names.forEach(name => name.style.marginTop = '10px')
+            }
+        })
+
+        slidersDiv.addEventListener('click', (e) => {
+            if (e.target.classList.contains('lock')) {
+                const parent = e.target.parentElement
+                const slider = parent.querySelector('.slider')
+                if (parent.dataset.locked === "true") {
+                    parent.dataset.locked = "false"
+                    slider.disabled = false
+                    e.target.textContent = '🔓'
+                } else {
+                    parent.dataset.locked = "true"
+                    slider.disabled = true
+                    e.target.textContent = '🔒'
+                }
+            } else if (e.target.classList.contains('delete')) e.target.parentElement.remove()
+        })
+
+        slidersDiv.addEventListener('input', (e) => {
+            if (e.target.classList.contains('slider')) {
+                const value = parseFloat(e.target.value)
+                e.target.nextElementSibling.textContent = `${value.toFixed(floatCheck.checked ? 2 : 0)}${floatCheck.checked ? '' : '%'}`
+            }
+        })
+
+        floatCheck.addEventListener('change', () => {
+            calSlider()
+            exportBoxed()
+        })
+
+        exportBoxed()
+    </script>
+
+</body>
+
+</html>
