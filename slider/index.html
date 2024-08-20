@@ -97,6 +97,17 @@
             color: #eee;
         }
 
+        .slider-value-input {
+            width: 60px;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #eee;
+            margin-left: 10px;
+        }
+
         .export-box {
             background-color: #222;
             padding: 10px;
@@ -192,7 +203,7 @@
                 if (parent.dataset.locked === "false") {
                     const newValue = (parseFloat(s.value) / index) * 100
                     s.value = newValue
-                    s.nextElementSibling.textContent = `${newValue.toFixed(floatCheck.checked ? 2 : 0)}${floatCheck.checked ? '' : '%'}`
+                    s.nextElementSibling.value = newValue.toFixed(floatCheck.checked ? 2 : 0)
                 }
             })
 
@@ -203,7 +214,7 @@
                 errorDiv.style.display = 'block'
             } else {
                 errorDiv.style.color = 'green'
-                errorDiv.textContent = 'The sum of all sliders is now  100!'
+                errorDiv.textContent = 'The sum of all sliders is now 100!'
                 errorDiv.style.display = 'block'
             }
         }
@@ -228,65 +239,79 @@
         }
 
         slidersDiv.addEventListener('input', (e) => {
-            if (e.target.classList.contains('slider')) {
-                const parent = e.target.parentElement
-                const index = Array.from(slidersDiv.children).indexOf(parent)
-                update(index)
-                calSlider()
-                exportBoxed()
-            }
-        })
-
-        document.getElementById('addSlider').addEventListener('click', () => {
-            const contain = document.createElement('div')
-            contain.classList.add('slider-container')
-            contain.dataset.locked = 'false'
-            contain.innerHTML = `
-                <input type="text" class="slider-name" placeholder="Slider Name">
-                <input type="range" class="slider" min="0" max="100" value="50">
-                <span class="slider-value">50</span> <!-- Added span to show value -->
-                <span class="lock">🔓</span>
-                <span class="delete">🗑️</span>
-            `
-            slidersDiv.appendChild(contain)
-
-            if (slidersDiv.children.length > 1) {
-                const names = slidersDiv.querySelectorAll('.slider-name')
-                names.forEach(name => name.style.marginTop = '10px')
-            }
-        })
-
-        slidersDiv.addEventListener('click', (e) => {
-            if (e.target.classList.contains('lock')) {
+            if (e.target.classList.contains('slider') || e.target.classList.contains('slider-value-input')) {
                 const parent = e.target.parentElement
                 const slider = parent.querySelector('.slider')
-                if (parent.dataset.locked === "true") {
-                    parent.dataset.locked = "false"
-                    slider.disabled = false
-                    e.target.textContent = '🔓'
-                } else {
-                    parent.dataset.locked = "true"
-                    slider.disabled = true
-                    e.target.textContent = '🔒'
-                }
-            } else if (e.target.classList.contains('delete')) e.target.parentElement.remove()
-        })
-
-        slidersDiv.addEventListener('input', (e) => {
-            if (e.target.classList.contains('slider')) {
+                const input = parent.querySelector('.slider-value-input')
                 const value = parseFloat(e.target.value)
-                e.target.nextElementSibling.textContent = `${value.toFixed(floatCheck.checked ? 2 : 0)}${floatCheck.checked ? '' : '%'}`
+                slider.value = input.value = value
+                const index = Array.from(slidersDiv.children).indexOf(parent)
+                if (parent.dataset.locked === 'false') update(index)
+                calSlider()
             }
         })
 
-        floatCheck.addEventListener('change', () => {
-            calSlider()
-            exportBoxed()
-        })
+        const lockSlider = (lock, del) => {
+            lock.addEventListener('click', () => {
+                const container = lock.parentElement
+                container.dataset.locked = container.dataset.locked === "true" ? "false" : "true"
+                lock.textContent = container.dataset.locked === "true" ? 'Unlock' : 'Lock'
+            })
 
-        exportBoxed()
+            del.addEventListener('click', () => {
+                slidersDiv.removeChild(del.parentElement)
+                calSlider()
+            })
+        }
+
+        const sliderCreator = () => {
+            const div = document.createElement('div')
+            div.classList.add('slider-container')
+            div.dataset.locked = "false"
+
+            const nameInput = document.createElement('input')
+            nameInput.type = 'text'
+            nameInput.placeholder = 'Slider Name'
+            nameInput.classList.add('slider-name')
+
+            const slider = document.createElement('input')
+            slider.type = 'range'
+            slider.min = '0'
+            slider.max = '100'
+            slider.value = '20'
+            slider.step = '0.01'
+            slider.classList.add('slider')
+
+            const lock = document.createElement('button')
+            lock.textContent = 'Lock'
+            lock.classList.add('lock')
+
+            const del = document.createElement('button')
+            del.textContent = 'Delete'
+            del.classList.add('delete')
+
+            const valueInput = document.createElement('input')
+            valueInput.type = 'number'
+            valueInput.value = slider.value
+            valueInput.classList.add('slider-value-input')
+            valueInput.min = '0'
+            valueInput.max = '100'
+
+            div.appendChild(nameInput)
+            div.appendChild(slider)
+            div.appendChild(valueInput)
+            div.appendChild(lock)
+            div.appendChild(del)
+            slidersDiv.appendChild(div)
+            lockSlider(lock, del)
+        }
+
+        document.getElementById('addSlider').addEventListener('click', sliderCreator)
+
+        document.getElementById('exportCode').addEventListener('click', exportBoxed)
+        document.getElementById('addSlider').click()
+        document.getElementById('addSlider').click()
     </script>
-
 </body>
 
 </html>
