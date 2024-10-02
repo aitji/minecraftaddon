@@ -105,12 +105,12 @@
         <p id="subtitle">you an contact me, im prefer discord</p>
         <p><a href="https://www.youtube.com/@aitji." target="blank"><img align="center"
                     src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg"
-                    alt="@inwaitji" height="30" width="40" /><strong>AitJi Gamer</strong> <em>(@InwAitJi)</em>
+                    alt="@aitji" height="30" width="40" /><strong>AitJi Gamer</strong> <em>(@aitji)</em>
             </a></p>
         <p><a href="https://discord.com/invite/jPerpN98JX" target="blank"><img align="center"
                     src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg"
-                    alt="inwaitji" height="30" width="40" /><strong>! AitJi Gamer !</strong>
-                <em>(@inwaitji)</em>
+                    alt="aitji" height="30" width="40" /><strong>! AitJi Gamer !</strong>
+                <em>(@aitji)</em>
             </a>
         </p>
     </div>
