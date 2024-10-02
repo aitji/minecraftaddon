@@ -1,15 +1,15 @@
-export const lastest_ver = "1.21.20"
+export const lastest_ver = "1.21.30"
 
 export const addon = [
-    {
-        title: "MultiAddon (หลายแอดออน)",
-        description: "(ไม่มีในช่อง) แต่อยากเอามาใส่",
-        longDes: 'ไม่มีไร ๆ',
-        imgSrc: 'pack.png',
-        readId: "multiaddon",
-        pageHref: "#",
-        isStable: true
-    },
+    // {
+    //     title: "MultiAddon (หลายแอดออน)",
+    //     description: "(ไม่มีในช่อง) แต่อยากเอามาใส่",
+    //     longDes: 'ไม่มีไร ๆ',
+    //     imgSrc: 'pack.png',
+    //     readId: "multiaddon",
+    //     pageHref: "#",
+    //     isStable: true
+    // },
     {
         title: "Level (ระบบเลเวล)",
         description: "เพิ่ม  Structure 'xp' เพื่อโหลดคอมมานเลเวล",
