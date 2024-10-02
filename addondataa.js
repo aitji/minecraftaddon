@@ -5,7 +5,7 @@ export const addon = [
         title: "TPA (ขอเทเลพอร์ต)",
         description: "เพิ่มระบบขอการเทเลพอร์ต โดยใช้เข็มทิศในการเปิดเมนู",
         imgSrc: 'tpa.png',
-        readId: "level",
+        readId: "tpa",
         pageHref: "#",
         isStable: true
     },
